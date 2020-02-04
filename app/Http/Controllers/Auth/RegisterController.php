@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,10 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'firstname'  =>  ['required', 'string', 'max:255'],
-            'name'       =>  ['required', 'string', 'max:255'],
-            'email'      =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'   =>  ['required', 'string', 'min:8', 'confirmed'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string','min:5', 'max:10', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -64,12 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role = Role::where('name','Membre')->first()->id;
         return User::create([
             'firstname' => $data['firstname'],
-            'name'      => $data['name'],
-            'email'     => $data['email'],
-            'roles_id'  => '1',
-            'password'  => Hash::make($data['password']),
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'roles_id'  => $role,
         ]);
     }
 }

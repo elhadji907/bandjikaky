@@ -30,8 +30,14 @@ class CreateMembresTable extends Migration
             $table->integer('nbrefant')->nullable()->default('0');
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('generations_id');
+            $table->unsignedInteger('quartiers_id');
+            $table->unsignedInteger('familles_id');
+
+            $table->index(["familles_id"], 'fk_membres_familles1_idx');
 
             $table->index(["users_id"], 'fk_personnels_users1_idx');
+
+            $table->index(["quartiers_id"], 'fk_membres_quartiers1_idx');
 
             $table->index(["generations_id"], 'fk_membres_generations1_idx');
             $table->softDeletes();
@@ -45,6 +51,16 @@ class CreateMembresTable extends Migration
 
             $table->foreign('generations_id', 'fk_membres_generations1_idx')
                 ->references('id')->on('generations')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('quartiers_id', 'fk_membres_quartiers1_idx')
+                ->references('id')->on('quartiers')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('familles_id', 'fk_membres_familles1_idx')
+                ->references('id')->on('familles')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

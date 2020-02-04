@@ -7,9 +7,10 @@
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
+                    {{--  @foreach($errors->all() as $error)  --}}
+                    {{--  <li>{{$error}}</li>  --}}
+                    {{--  @endforeach  --}}
+                    erreur de validation, les champs en rouges sont obligatoires !
                     </ul>
                 </div>
                 @endif
@@ -49,7 +50,7 @@
                             </div>
                         </div>
 
-                        {{--  <div class="form-group row">
+                        <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
@@ -61,7 +62,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>  --}}
+                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Addresse E-Mail') }}</label>
