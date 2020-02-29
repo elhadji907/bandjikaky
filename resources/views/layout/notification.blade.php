@@ -35,7 +35,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <i class="material-icons">close</i>
                 </button>
-                <span data-notify="message">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
+                <span data-notify="message">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you dont have to worry about the style.</span>
               </div>
             </div>
             <div class="col-md-6">
