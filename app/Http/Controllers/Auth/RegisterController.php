@@ -50,7 +50,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            // 'firstname' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             // 'username' => ['required', 'string','min:5', 'max:10', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -68,7 +68,7 @@ class RegisterController extends Controller
     {
         $role = Role::where('name','Membre')->first()->id;
         return User::create([
-            // 'firstname' => $data['firstname'],
+            'firstname' => $data['firstname'],
             'name' => $data['name'],
             // 'username' => $data['username'],
             'email' => $data['email'],

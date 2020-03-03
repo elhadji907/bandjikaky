@@ -43,7 +43,7 @@
             @auth
 
             <a class="navbar-brand pl-3" href="{{ url('/home') }}">Mon Compte
-                <img src="{{ asset(Auth::user()->profile->getImage()) }}" class="rounded-circle" width="30px" height="auto"/>
+                {{-- <img src="{{ asset(Auth::user()->profile->getImage()) }}" class="rounded-circle" width="30px" height="auto"/> --}}
             </a>
             
             @else
