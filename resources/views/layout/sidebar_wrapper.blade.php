@@ -14,7 +14,7 @@
     </li>
     <li class="nav-item ">
       <a class="nav-link" href="#">
-        <i class="material-icons">library_books</i>
+        <i class="material-icons">person</i>
         <p>Gestionnaires</p>
       </a>
     </li>
@@ -26,7 +26,7 @@
     </li>
     <li class="nav-item ">
       <a class="nav-link" href="#">
-        <i class="material-icons">content_paste</i>
+        <i class="material-icons">person</i>
         <p>Membres</p>
       </a>
     </li>
