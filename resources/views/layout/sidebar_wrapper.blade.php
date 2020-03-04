@@ -30,5 +30,11 @@
         <p>Membres</p>
       </a>
     </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="{{ route('generations.index') }}">
+        <i class="material-icons">person</i>
+        <p>Générations</p>
+      </a>
+    </li>
   </ul>
 </div>
