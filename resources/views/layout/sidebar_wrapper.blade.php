@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
   <ul class="nav">
     <li class="nav-item active  ">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ url('/home') }}">
         <i class="material-icons">Tableau de bord</i>
         <p>HOME</p>
       </a>
