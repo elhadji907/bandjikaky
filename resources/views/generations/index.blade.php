@@ -26,9 +26,9 @@
                         <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-generations">
                           <thead class="table-dark">
                             <tr>
-                              <th>N°</th>
+                              <th style="width:10%;">N°</th>
                               <th>Nom</th>
-                              <th  style="width:15%;">Action</th>
+                              <th style="width:15%;">Action</th>
                             </tr>
                           </thead>
                           <tfoot class="table-dark">
@@ -56,7 +56,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h6 class="modal-title" id="exampleModalLabel">Êtes-vous sûr de bien vouloir supprimer cet admin ?</h6>
+                <h6 class="modal-title" id="exampleModalLabel">Êtes-vous sûr de bien vouloir supprimer cet enregistrement ?</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -65,8 +65,8 @@
                 cliquez sur close pour annuler
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger"><i class="fas fa-times">&nbsp;Delete</i></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-times">&nbsp;Supprimer</i></button>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@
                           } 
                   }
                 },
-                order:[[0,'desc'], [0, 'asc']]              
+                order:[[0,'asc'], [0, 'desc']]              
           });
 
           

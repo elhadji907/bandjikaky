@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Generation;
-use App\Role;
+use App\Membre;
 use Illuminate\Http\Request;
-use Yajra\Datatables\Datatables;
 
-class GenerationsController extends Controller
+class MembresController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-      /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function index()
-    {        
-        return view('generations.index');
+    {
+        //
     }
 
     /**
@@ -31,8 +24,7 @@ class GenerationsController extends Controller
      */
     public function create()
     {
-        $roles = Role::get();
-        return view('generations.create',compact('roles'));
+        //
     }
 
     /**
@@ -49,10 +41,10 @@ class GenerationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Generation  $generation
+     * @param  \App\Membre  $membre
      * @return \Illuminate\Http\Response
      */
-    public function show(Generation $generation)
+    public function show(Membre $membre)
     {
         //
     }
@@ -60,10 +52,10 @@ class GenerationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Generation  $generation
+     * @param  \App\Membre  $membre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Generation $generation)
+    public function edit(Membre $membre)
     {
         //
     }
@@ -72,10 +64,10 @@ class GenerationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Generation  $generation
+     * @param  \App\Membre  $membre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Generation $generation)
+    public function update(Request $request, Membre $membre)
     {
         //
     }
@@ -83,17 +75,11 @@ class GenerationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Generation  $generation
+     * @param  \App\Membre  $membre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Generation $generation)
+    public function destroy(Membre $membre)
     {
         //
-    }
-
-    public function list(Request $request)
-    {
-        $generations=Generation::get();
-        return Datatables::of($generations)->make(true);
     }
 }
