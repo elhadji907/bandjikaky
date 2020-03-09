@@ -7,9 +7,9 @@
       </a>
     </li>
     <li class="nav-item ">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ route('administrateurs.index') }}">
         <i class="material-icons">person</i>
-        <p>Administrateurs</p>
+        <p>Utilisateurs</p>
       </a>
     </li>
     <li class="nav-item ">

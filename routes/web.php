@@ -20,4 +20,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/generations/list', 'GenerationsController@list')->name('generations.list');
+Route::get('/administrateurs/list', 'AdministrateursController@list')->name('administrateurs.list');
+
+Route::resource('/administrateurs', 'AdministrateursController');
 Route::resource('/generations', 'GenerationsController');
