@@ -7,6 +7,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -24,6 +25,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * 
  * @property Annee $annee
  * @property Membre $membre
+ * @property Collection|Body[] $bodies
+ * @property Collection|Lacoste[] $lacostes
+ * @property Collection|Teeshirt[] $teeshirts
  *
  * @package App
  */
@@ -52,5 +56,20 @@ class Participation extends Model
 	public function membre()
 	{
 		return $this->belongsTo(Membre::class, 'membres_id');
+	}
+
+	public function bodies()
+	{
+		return $this->hasMany(Body::class, 'participations_id');
+	}
+
+	public function lacostes()
+	{
+		return $this->hasMany(Lacoste::class, 'participations_id');
+	}
+
+	public function teeshirts()
+	{
+		return $this->hasMany(Teeshirt::class, 'participations_id');
 	}
 }

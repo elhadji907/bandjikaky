@@ -27,7 +27,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Generation extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
+
 	protected $table = 'generations';
 
 	protected $fillable = [

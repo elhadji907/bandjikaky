@@ -11,38 +11,39 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Administrateur
+ * Class Lacoste
  * 
  * @property int $id
  * @property string $uuid
- * @property string $matricule
- * @property int $users_id
+ * @property string $montant
+ * @property string $annee
+ * @property int $participations_id
  * @property string $deleted_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * 
- * @property User $user
+ * @property Participation $participation
  *
  * @package App
  */
-class Administrateur extends Model
+class Lacoste extends Model
 {
-	
-	use \Illuminate\Database\Eloquent\SoftDeletes;
-	protected $table = 'administrateurs';
+	use SoftDeletes;
+	protected $table = 'lacostes';
 
 	protected $casts = [
-		'users_id' => 'int'
+		'participations_id' => 'int'
 	];
 
 	protected $fillable = [
 		'uuid',
-		'matricule',
-		'users_id'
+		'montant',
+		'annee',
+		'participations_id'
 	];
 
-	public function user()
+	public function participation()
 	{
-		return $this->belongsTo(User::class, 'users_id');
+		return $this->belongsTo(Participation::class, 'participations_id');
 	}
 }

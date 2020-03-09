@@ -27,7 +27,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Famille extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'familles';
 
 	protected $fillable = [

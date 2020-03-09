@@ -2,16 +2,16 @@
 @section('title', 'Bandjikaky - Liste des generations')
 @section('content')
         <div class="container-fluid">
-            @if (session()->has('success'))
-                <div class="alert alert-success" role="alert">{{ session('success') }}</div>
-            @endif 
           <div class="row justify-content-center pt-5">
             <div class="col-md-8">
                 @if (session('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
-                @endif
+                @endif                
+              @if (session()->has('success'))
+                  <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+              @endif 
               <div class="card"> 
                   <div class="card-header">
                       <i class="fas fa-table"></i>

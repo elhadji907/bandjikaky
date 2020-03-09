@@ -27,7 +27,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Gestionnaire extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'gestionnaires';
 
 	protected $casts = [

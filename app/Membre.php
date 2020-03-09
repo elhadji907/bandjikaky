@@ -38,7 +38,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Membre extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'membres';
 
 	protected $casts = [

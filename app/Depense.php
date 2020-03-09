@@ -27,7 +27,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Depense extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'depenses';
 
 	protected $casts = [

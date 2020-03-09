@@ -43,7 +43,24 @@ class GenerationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $generation = $request->input('generation');
+        // dd($generation);
+
+        $this->validate(
+            $request, [
+                'generation'     =>  'required|string|max:200|unique:generations,name',
+            ]
+        );
+
+        $generation = new Generation([
+            'name'           =>      $request->input('generation')
+        ]);
+
+        // dd( $generation);
+
+        $generation->save();
+
+        return redirect()->route('generations.index')->with('success','enregistrement effectué avec succès !');
     }
 
     /**
@@ -88,7 +105,9 @@ class GenerationsController extends Controller
      */
     public function destroy(Generation $generation)
     {
-        //
+        $generation->delete();
+        $message = 'La génération '.$generation->name.' a été supprimée avec succès';
+        return redirect()->route('generations.index')->with(compact('message'));
     }
 
     public function list(Request $request)

@@ -28,7 +28,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Recette extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'recettes';
 
 	protected $casts = [

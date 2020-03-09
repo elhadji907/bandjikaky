@@ -27,7 +27,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Quartier extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'quartiers';
 
 	protected $fillable = [

@@ -30,7 +30,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Profile extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'profiles';
 
 	protected $casts = [

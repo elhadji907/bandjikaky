@@ -29,7 +29,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Annee extends Model
 {
-	use SoftDeletes;
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'annees';
 
 	protected $fillable = [
