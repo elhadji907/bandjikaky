@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('layout.default')
 @section('content')
 <div class="content">
     <div class="container col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
@@ -6,31 +6,32 @@
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">{{ session('success') }}</div>
             @endif                    
-            <div class="row pt-5"></div>
+            {{--  <div class="row pt-5">
+                
+            </div>  --}}
             <div class="card">
-                <div class="card-header card-header-primary text-center">
+                <div class="card-header card-header-success text-center">
                     <h3 class="card-title">Enregistrement</h3>
                     <p class="card-category">Utilisateurs</p>
                 </div>
-                <div class="card-body">
+                <div class="card-body pt-5">
                                                
                         <form method="POST" action="{{ url('administrateurs') }}">
-                           @csrf
-                                                    
-                            <div class="form-group">
-                                <label for="input-matricule"><b>Matricule:</b></label>
-                                <input type="text" name="matricule" class="form-control" id="input-matricule" placeholder="Matricule" value="{{ old('matricule') }}">
-                                <small id="emailHelp" class="form-text text-muted">
-                                        @if ($errors->has('matricule'))
-                                        @foreach ($errors->get('matricule') as $message)
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @endforeach
-                                        @endif
-                                </small>
-                            </div>
+                           @csrf 
+                           <div class="form-group">
+                            <label for="input-matricule"><b>Matricule:</b></label>
+                            <input type="text" name="matricule" class="form-control" id="input-matricule" value="{{ old('matricule') }}">
+                            <small id="emailHelp" class="form-text text-muted">
+                                    @if ($errors->has('matricule'))
+                                    @foreach ($errors->get('matricule') as $message)
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @endforeach
+                                    @endif
+                            </small>
+                        </div>
                             <div class="form-group">
                                 <label for="input-prenom"><b>Prenom:</b></label>
-                                <input type="text" name="prenom" class="form-control" id="input-prenom" placeholder="Prenom" value="{{ old('prenom') }}">
+                                <input type="text" name="prenom" class="form-control" id="input-prenom" value="{{ old('prenom') }}">
                                 <small id="emailHelp" class="form-text text-muted">
                                         @if ($errors->has('prenom'))
                                         @foreach ($errors->get('prenom') as $message)
@@ -42,7 +43,7 @@
                             
                             <div class="form-group">
                                 <label for="input-nom"><b>Nom:</b></label>
-                                <input type="text" name="nom" class="form-control" id="input-nom" placeholder="Nom" value="{{ old('nom') }}">
+                                <input type="text" name="nom" class="form-control" id="input-nom" value="{{ old('nom') }}">
                                 <small id="emailHelp" class="form-text text-muted">
                                         @if ($errors->has('nom'))
                                         @foreach ($errors->get('nom') as $message)
@@ -53,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b>Adresse email:</b></label>
-                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail" value=" {{old('email')}}">
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" {{old('email')}}">
                                 <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre email avec qui que ce soit.</small>
                                 <small id="emailHelp" class="form-text text-muted">
                                     @if ($errors->has('email'))
@@ -65,7 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b>Téléphone:</b></label>
-                                <input type="text" name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Telephone" value="{{old('telephone')}}">
+                                <input type="text" name="telephone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{old('telephone')}}">
                                 <small id="emailHelp" class="form-text text-muted">
                                     @if ($errors->has('telephone'))
                                     @foreach ($errors->get('telephone') as $message)
@@ -91,7 +92,7 @@
                             </div> --}}
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><b>Mot de passe:</b></label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                                 @if ($errors->has('password'))
                                 @foreach ($errors->get('password') as $message)
                                 <p class="text-danger">{{ $message }}</p>
@@ -100,7 +101,7 @@
                             </div> 
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><b>Mot de passe:</b>(confirmation)</label>
-                                <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1" placeholder="Repeter mot de passe">
+                                <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1">
                                 @if ($errors->has('password_confirmation'))
                                 @foreach ($errors->get('password_confirmation') as $message)
                                 <p class="text-danger">{{ $message }}</p>

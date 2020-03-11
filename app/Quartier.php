@@ -29,6 +29,8 @@ class Quartier extends Model
 {
 	
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
+	
 	protected $table = 'quartiers';
 
 	protected $fillable = [

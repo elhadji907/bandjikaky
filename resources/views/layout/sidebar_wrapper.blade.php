@@ -13,9 +13,9 @@
       </a>
     </li>
     <li class="nav-item ">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ route('quartiers.index') }}">
         <i class="material-icons">person</i>
-        <p>Gestionnaires</p>
+        <p>Quartiers</p>
       </a>
     </li>
     <li class="nav-item ">

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Quartier;
 use App\Generation;
 use App\Role;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
-class GenerationsController extends Controller
+class QuartiersController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -24,16 +25,11 @@ class GenerationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function index()
-    {        
+    {
         
         $generations = Generation::get();
-        return view('generations.index', compact('generations'));
+        return view('quartiers.index', compact('generations'));
     }
 
     /**
@@ -45,7 +41,7 @@ class GenerationsController extends Controller
     {
         $roles = Role::get();
         $generations = Generation::get();
-        return view('generations.create',compact('roles','generations'));
+        return view('quartiers.create',compact('roles','generations'));
     }
 
     /**
@@ -56,33 +52,29 @@ class GenerationsController extends Controller
      */
     public function store(Request $request)
     {
-        // $generation = $request->input('generation');
-        // dd($generation);
-
         $this->validate(
             $request, [
-                'generation'     =>  'required|string|max:200|unique:generations,name',
+                'quartier'     =>  'required|string|max:200|unique:quartiers,name',
             ]
         );
 
-        $generation = new Generation([
-            'name'           =>      $request->input('generation')
+        $quartier = new Quartier([
+            'name'           =>      $request->input('quartier')
         ]);
 
-        // dd( $generation);
 
-        $generation->save();
+        $quartier->save();
 
-        return redirect()->route('generations.index')->with('success','enregistrement effectué avec succès !');
+        return redirect()->route('quartiers.index')->with('success','enregistrement effectué avec succès !');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Generation  $generation
+     * @param  \App\Quartier  $quartier
      * @return \Illuminate\Http\Response
      */
-    public function show(Generation $generation)
+    public function show(Quartier $quartier)
     {
         //
     }
@@ -90,57 +82,57 @@ class GenerationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Generation  $generation
+     * @param  \App\Quartier  $quartier
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $generations = Generation::get();
-        $generation = Generation::find($id);
+        $quartier = Quartier::find($id);
         $roles = Role::get();
-        return view('generations.update', compact('generation','id','roles', 'generations'));
+        return view('quartiers.update', compact('quartier','id','roles', 'generations'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Generation  $generation
+     * @param  \App\Quartier  $quartier
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate(
             $request, [
-                'generation'     =>  'required|string|max:200|unique:generations,name',
+                'quartier'     =>  'required|string|max:200|unique:quartiers,name',
             ]
         );
 
-        $generation = Generation::find($id);
+        $quartier = Quartier::find($id);
 
-        $generation->name   =     $request->input('generation');
+        $quartier->name   =     $request->input('quartier');
 
-        $generation->save();
+        $quartier->save();
         
-        return redirect()->route('generations.index')->with('success','generation modifiée avec succès !');
+        return redirect()->route('quartiers.index')->with('success','quartier modifiée avec succès !');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Generation  $generation
+     * @param  \App\Quartier  $quartier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Generation $generation)
+    public function destroy(Quartier $quartier)
     {
-        $generation->delete();
-        $message = 'La génération '.$generation->name.' a été supprimée avec succès';
-        return redirect()->route('generations.index')->with(compact('message'));
+        $quartier->delete();
+        $message = 'Le quartier '.$quartier->name.' a été supprimée avec succès';
+        return redirect()->route('quartiers.index')->with(compact('message'));
     }
 
     public function list(Request $request)
     {
-        $generations=Generation::get();
-        return Datatables::of($generations)->make(true);
+        $quartiers=Quartier::get();
+        return Datatables::of($quartiers)->make(true);
     }
 }

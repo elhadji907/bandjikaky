@@ -1,43 +1,40 @@
 @extends('layout.default')
+@section('title', 'Bandjikaky - Liste des quartiers')
 @section('content')
         <div class="container-fluid">
           <div class="row justify-content-center pt-5">
-            <div class="col-md-12 pt-5">
-              @if (session()->has('success'))
-                  <div class="alert alert-success" role="alert">{{ session('success') }}</div>
-              @endif 
+            <div class="col-md-8">
                 @if (session('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
-                @endif
+                @endif                
+              @if (session()->has('success'))
+                  <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+              @endif 
               <div class="card"> 
                   <div class="card-header">
                       <i class="fas fa-table"></i>
-                      Liste des utilisateurs
+                      Liste des générations
                   </div>              
                 <div class="card-body">
                       <div class="table-responsive">
                           <div align="right">
-                            <a href="{{ route('administrateurs.create') }}"><div class="btn btn-success btn-sm"><i class="fas fa-plus">&nbsp;Ajouter</i></div></a>
+                            <a href="{{route('quartiers.create')}}"><div class="btn btn-success  btn-sm"><i class="fas fa-plus"></i>&nbsp;Ajouter</i></div></a>
                           </div>
                           <br />
-                        <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-administrateurs">
+                        <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="table-quartiers">
                           <thead class="table-dark">
                             <tr>
-                              <th>Prenom</th>
+                              <th style="width:10%;">N°</th>
                               <th>Nom</th>
-                              <th>Email</th>
-                              <th>Téléphone</th>
                               <th style="width:15%;">Action</th>
                             </tr>
                           </thead>
                           <tfoot class="table-dark">
                               <tr>
-                                <th>Prenom</th>
+                                <th>N°</th>
                                 <th>Nom</th>
-                                <th>Email</th>
-                                <th>Téléphone</th>
                                 <th>Action</th>
                               </tr>
                             </tfoot>
@@ -52,14 +49,14 @@
         </div>
       </div>
 
-      <div class="modal fade" id="modal_delete_administrateur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form method="POST" action="" id="form-delete-administrateur">
+      <div class="modal fade" id="modal_delete_quartier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="POST" action="" id="form-delete-quartier">
           @csrf
           @method('DELETE')
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h6 class="modal-title" id="exampleModalLabel">Êtes-vous sûr de bien vouloir supprimer cet admin ?</h6>
+                <h6 class="modal-title" id="exampleModalLabel">Êtes-vous sûr de bien vouloir supprimer cet enregistrement ?</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -68,8 +65,8 @@
                 cliquez sur close pour annuler
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger"><i class="fas fa-times">&nbsp;Delete</i></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-times">&nbsp;Supprimer</i></button>
               </div>
             </div>
           </div>
@@ -80,15 +77,13 @@
       @push('scripts')
       <script type="text/javascript">
       $(document).ready(function () {
-          $('#table-administrateurs').DataTable( { 
+          $('#table-quartiers').DataTable( { 
             "processing": true,
             "serverSide": true,
-            "ajax": "{{route('administrateurs.list')}}",
+            "ajax": "{{route('quartiers.list')}}",
             columns: [
-                    { data: 'user.firstname', name: 'user.firstname' },
-                    { data: 'user.name', name: 'user.name' },
-                    { data: 'user.email', name: 'user.email' },
-                    { data: 'user.telephone', name: 'user.telephone' },
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
                     { data: null ,orderable: false, searchable: false}
 
                 ],
@@ -96,12 +91,12 @@
                         {
                         "data": null,
                         "render": function (data, type, row) {
-                        url_e =  "{!! route('administrateurs.edit',':id')!!}".replace(':id', data.id);
-                        url_d =  "{!! route('administrateurs.destroy',':id')!!}".replace(':id', data.id);
-                        return '<a href='+url_e+'  class=" btn btn-primary edit btn-sm" title="Modifier"><i class="far fa-edit">&nbsp;</i></a>&nbsp;'+
-                        '<div class="btn btn-danger delete btn_delete_administrateur btn-sm" title="Supprimer" data-href='+url_d+'><i class="fas fa-times">&nbsp;</i></div>';
+                        url_e =  "{!! route('quartiers.edit',':id')!!}".replace(':id', data.id);
+                        url_d =  "{!! route('quartiers.destroy',':id')!!}".replace(':id', data.id);
+                        return '<a href='+url_e+'  class=" btn btn-primary edit btn-sm" title="Modifier"><i class="far fa-edit">&nbsp;</i></a>'+
+                        '<div class="btn btn-danger delete btn_delete_quartier btn-sm" title="Supprimer" data-href='+url_d+'><i class="fas fa-trash-alt"></i></div>';
                         },
-                        "targets": 4
+                        "targets": 2
                         },
                 ],
                 language: {
@@ -133,15 +128,15 @@
                           } 
                   }
                 },
-                order:[[0,'desc'], [0, 'asc']]              
+                order:[[0,'asc'], [0, 'desc']]              
           });
 
           
-        $('#table-administrateurs').off('click', '.btn_delete_administrateur').on('click', '.btn_delete_administrateur',
+        $('#table-quartiers').off('click', '.btn_delete_quartier').on('click', '.btn_delete_quartier',
         function() { 
           var href=$(this).data('href');
-          $('#form-delete-administrateur').attr('action', href);
-          $('#modal_delete_administrateur').modal();
+          $('#form-delete-quartier').attr('action', href);
+          $('#modal_delete_quartier').modal();
         });
       });
       

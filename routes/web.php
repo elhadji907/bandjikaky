@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/generations/list', 'GenerationsController@list')->name('generations.list');
 Route::get('/administrateurs/list', 'AdministrateursController@list')->name('administrateurs.list');
+Route::get('/quartiers/list', 'QuartiersController@list')->name('quartiers.list');
 
 Route::resource('/administrateurs', 'AdministrateursController');
 Route::resource('/generations', 'GenerationsController');
+Route::resource('/quartiers', 'QuartiersController');

@@ -10,19 +10,19 @@
             <div class="card">
                 <div class="card-header card-header-success text-center">
                     <h3 class="card-title">Modification</h3>
-                    <p class="card-category">Generation</p>
+                    <p class="card-category">Quartier</p>
                 </div>
                 <div class="card-body">
                                                
-                        <form method="POST" action="{{ action('GenerationsController@update', $id) }}">
+                        <form method="POST" action="{{ action('QuartiersController@update', $id) }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="PATCH" />                         
                             <div class="form-group">
-                                <label for="input-generation"><b>NOM</b></label>
-                                <input type="text" name="generation" class="form-control" id="input-generation" value="{{ $generation->name }}">
+                                <label for="input-quartier"><b>NOM</b></label>
+                                <input type="text" name="quartier" class="form-control" id="input-quartier" value="{{ $quartier->name }}">
                                 <small id="emailHelp" class="form-text text-muted">
-                                        @if ($errors->has('generation'))
-                                        @foreach ($errors->get('generation') as $message)
+                                        @if ($errors->has('quartier'))
+                                        @foreach ($errors->get('quartier') as $message)
                                         <p class="text-danger">{{ $message }}</p>
                                         @endforeach
                                         @endif

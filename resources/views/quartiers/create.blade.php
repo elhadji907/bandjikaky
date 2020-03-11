@@ -1,5 +1,5 @@
 @extends('layout.default')
-@section('title', 'Bandjikaky - Liste des generations')
+@section('title', 'Bandjikaky - Liste des quartiers')
 @section('content')
 <div class="container-fluid">
     @if (session()->has('success'))
@@ -15,18 +15,18 @@
             <div class="card"> 
                 <div class="card-header card-header-success text-center">
                     <h3 class="card-title">Enregistrement</h3>
-                    <p class="card-category">Generations</p>
+                    <p class="card-category">quartiers</p>
                 </div>
                 <div class="card-body pt-5">
                 <div class="table-responsive">
-                    <form method="POST" action="{{ url('generations') }}">
+                    <form method="POST" action="{{ url('quartiers') }}">
                         @csrf
                          <div class="form-group">
-                             <label for="input-generation"><b>Nom de la génération:</b></label>
-                             <input type="text" name="generation" class="form-control" id="input-generation" placeholder="ex: Diamano" value="{{ old('generation') }}">
+                             <label for="input-quartier"><b>Nom du quartier:</b></label>
+                             <input type="text" name="quartier" class="form-control" id="input-quartier" placeholder="ex: NEMA" value="{{ old('quartier') }}">
                              <small id="emailHelp" class="form-text text-muted">
-                                     @if ($errors->has('generation'))
-                                     @foreach ($errors->get('generation') as $message)
+                                     @if ($errors->has('quartier'))
+                                     @foreach ($errors->get('quartier') as $message)
                                      <p class="text-danger">{{ $message }}</p>
                                      @endforeach
                                      @endif
