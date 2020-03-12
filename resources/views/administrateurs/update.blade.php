@@ -65,12 +65,12 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b>Choisir un role:</b></label>
                                 <select name="choixrole" id="choixrole" class="form-control">
-                                        <option value="">--sélectionnez un rôle--</option>
+                                        {{--  <option value="">--sélectionnez un rôle--</option>  --}}
                                     @foreach($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
                                     </select>
-                                <small id="emailHelp" class="form-text text-muted">Le rôle actuel : {{ $utilisateur->role->name }}</small>
+                                {{--  <small id="emailHelp" class="form-text text-muted">Le rôle actuel : {{ $utilisateur->role->name }}</small>  --}}
                                 <small id="emailHelp" class="form-text text-muted">
                                     @if ($errors->has('choixrole'))
                                     @foreach ($errors->get('choixrole') as $message)
