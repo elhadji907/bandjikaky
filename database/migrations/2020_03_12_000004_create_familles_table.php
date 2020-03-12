@@ -25,8 +25,17 @@ class CreateFamillesTable extends Migration
             $table->increments('id');
             $table->char('uuid', 36);
             $table->string('name', 200);
+            $table->unsignedInteger('quartiers_id');
+
+            $table->index(["quartiers_id"], 'fk_familles_quartiers1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
+
+
+            $table->foreign('quartiers_id', 'fk_familles_quartiers1_idx')
+                ->references('id')->on('quartiers')
+                ->onDelete('no action')
+                ->onUpdate('no action');
         });
     }
 

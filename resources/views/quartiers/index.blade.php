@@ -27,14 +27,14 @@
                           <thead class="table-dark">
                             <tr>
                               <th style="width:10%;">N°</th>
-                              <th>Nom</th>
+                              <th>Quartier</th>
                               <th style="width:15%;">Action</th>
                             </tr>
                           </thead>
                           <tfoot class="table-dark">
                               <tr>
                                 <th>N°</th>
-                                <th>Nom</th>
+                                <th>Quartier</th>
                                 <th>Action</th>
                               </tr>
                             </tfoot>

@@ -19,6 +19,12 @@
       </a>
     </li>
     <li class="nav-item ">
+      <a class="nav-link" href="{{ route('familles.index') }}">
+        <i class="material-icons">person</i>
+        <p>Familles</p>
+      </a>
+    </li>
+    <li class="nav-item ">
       <a class="nav-link" href="#">
         <i class="material-icons">person</i>
         <p>Comptables</p>

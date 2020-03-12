@@ -56,9 +56,6 @@ class GenerationsController extends Controller
      */
     public function store(Request $request)
     {
-        // $generation = $request->input('generation');
-        // dd($generation);
-
         $this->validate(
             $request, [
                 'generation'     =>  'required|string|max:200|unique:generations,name',

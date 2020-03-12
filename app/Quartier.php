@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * 
+ * @property Collection|Famille[] $familles
  * @property Collection|Membre[] $membres
  *
  * @package App
@@ -37,6 +38,11 @@ class Quartier extends Model
 		'uuid',
 		'name'
 	];
+
+	public function familles()
+	{
+		return $this->hasMany(Famille::class, 'quartiers_id');
+	}
 
 	public function membres()
 	{

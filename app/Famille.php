@@ -17,10 +17,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $id
  * @property string $uuid
  * @property string $name
+ * @property int $quartiers_id
  * @property string $deleted_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * 
+ * @property Quartier $quartier
  * @property Collection|Membre[] $membres
  *
  * @package App
@@ -33,10 +35,20 @@ class Famille extends Model
 	
 	protected $table = 'familles';
 
+	protected $casts = [
+		'quartiers_id' => 'int'
+	];
+
 	protected $fillable = [
 		'uuid',
-		'name'
+		'name',
+		'quartiers_id'
 	];
+
+	public function quartier()
+	{
+		return $this->belongsTo(Quartier::class, 'quartiers_id');
+	}
 
 	public function membres()
 	{

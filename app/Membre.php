@@ -40,6 +40,8 @@ class Membre extends Model
 {
 	
 	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use \App\Helpers\UuidForKey;
+	
 	protected $table = 'membres';
 
 	protected $casts = [
