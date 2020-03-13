@@ -24,7 +24,7 @@ class CreateMembresTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
-            $table->string('cin', 200)->nullable();
+            $table->string('matricule', 200)->nullable();
             $table->dateTime('debut')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('fin')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('nbrefant')->nullable()->default('0');

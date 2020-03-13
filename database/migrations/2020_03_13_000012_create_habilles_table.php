@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLacostesTable extends Migration
+class CreateHabillesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'lacostes';
+    public $tableName = 'habilles';
 
     /**
      * Run the migrations.
-     * @table lacostes
+     * @table habilles
      *
      * @return void
      */
@@ -24,17 +24,18 @@ class CreateLacostesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->char('uuid', 36);
+            $table->string('name', 200)->nullable();
             $table->string('montant', 200);
             $table->string('annee', 45)->nullable();
-            $table->unsignedInteger('participations_id');
+            $table->unsignedInteger('membres_id');
 
-            $table->index(["participations_id"], 'fk_lacostes_participations1_idx');
+            $table->index(["membres_id"], 'fk_habilles_membres1_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
 
-            $table->foreign('participations_id', 'fk_lacostes_participations1_idx')
-                ->references('id')->on('participations')
+            $table->foreign('membres_id', 'fk_habilles_membres1_idx')
+                ->references('id')->on('membres')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });
